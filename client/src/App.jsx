@@ -1,9 +1,10 @@
+import { Analytics } from "@vercel/analytics/react";
 import { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
-// 🚀 Lazy Loading Pages (Code Splitting)
+
 const Home = lazy(() => import('./pages/Home'));
 const Portfolio = lazy(() => import('./pages/Portfolio'));
 const Services = lazy(() => import('./pages/Services'));
@@ -19,7 +20,6 @@ function App() {
         
         {/* Main Content Area */}
         <main className="flex-grow w-full">
-          
           <Suspense fallback={
             <div className="min-h-screen flex justify-center items-center bg-[#0a0a0a]">
               <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-green-400"></div>
@@ -37,6 +37,9 @@ function App() {
         </main>
 
         <Footer />
+        
+        {/* 📊 Vercel Analytics Component */}
+        <Analytics />
       </div>
     </Router>
   );
