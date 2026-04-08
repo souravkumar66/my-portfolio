@@ -28,7 +28,7 @@ const contactRoutes = require('./routes/contactRoutes');
 
 // Use Routes
 app.use('/api/projects', projectRoutes);
-app.use('/api/contact', contactLimiter, contactRoutes);
+app.use('/api/contact', contactRoutes);
 
 // Basic Route for Testing
 app.get('/', (req, res) => {
