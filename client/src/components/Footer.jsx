@@ -72,9 +72,7 @@ const Footer = () => {
           <p className="text-gray-500 text-sm">
             © {currentYear} Sourav. All rights reserved.
           </p>
-          <p className="text-gray-500 text-sm flex items-center gap-1">
-            Designed & Built with <span className="text-green-400 text-lg">♥</span>
-          </p>
+          
         </div>
       </div>
     </footer>
