@@ -13,7 +13,7 @@ const Contact = () => {
 
     try {
       
-      const response = await fetch('https://my-portfolio-vlso.onrender.com/api/contact', {
+      const response = await fetch('https://my-portfolio-h1fo.onrender.com/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

@@ -10,7 +10,7 @@ const ProjectDetails = () => {
   useEffect(() => {
     const fetchSingleProject = async () => {
       try {
-        const response = await fetch(`https://my-portfolio-vlso.onrender.com/api/projects/${id}`);
+        const response = await fetch(`https://my-portfolio-h1fo.onrender.com/api/projects/${id}`);
         const data = await response.json();
         setProject(data);
         setLoading(false);

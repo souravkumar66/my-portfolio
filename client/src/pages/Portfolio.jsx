@@ -11,7 +11,7 @@ const Portfolio = () => {
     const fetchProjects = async () => {
       try {
         // আপনার Render ব্যাকএন্ড লিংক
-        const response = await fetch('https://my-portfolio-vlso.onrender.com/api/projects');
+        const response = await fetch('https://my-portfolio-h1fo.onrender.com/api/projects');
         const data = await response.json();
         setProjects(data);
         setLoading(false);
