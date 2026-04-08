@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://my-portfolio-zeta-wheat-52.vercel.app/sitemap.xml
