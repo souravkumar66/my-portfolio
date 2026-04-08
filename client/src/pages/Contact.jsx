@@ -4,13 +4,15 @@ import { motion } from 'framer-motion';
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false); // 🛡️ Spam protection state
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     setStatus('Sending...');
 
     try {
-      // আপনার লাইভ Render API লিংক
+      
       const response = await fetch('https://my-portfolio-vlso.onrender.com/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -20,11 +22,20 @@ const Contact = () => {
       if (response.ok) {
         setStatus('Message sent successfully! I will get back to you soon.');
         setFormData({ name: '', email: '', message: '' });
+        
+        
+        setTimeout(() => setIsSubmitting(false), 15000); 
+      } else if (response.status === 429) {
+        
+        setStatus('You are sending messages too fast! Please wait a few minutes.');
+        setIsSubmitting(false);
       } else {
         setStatus('Failed to send message. Please try again.');
+        setIsSubmitting(false);
       }
     } catch (error) {
       setStatus('Something went wrong. Please check your connection.');
+      setIsSubmitting(false);
     }
   };
 
@@ -48,7 +59,7 @@ const Contact = () => {
           <div className="space-y-6">
             {/* Email Button */}
             <a 
-              href="mailto:your.email@example.com" 
+              href="mailto:sreeonu22@gmail.com" 
               className="flex items-center gap-4 bg-[#111] border border-gray-800 p-5 rounded-2xl hover:border-green-400 transition-colors group"
             >
               <div className="w-12 h-12 bg-[#1a1a1a] rounded-full flex items-center justify-center text-xl group-hover:bg-green-400 group-hover:text-black transition-colors">
@@ -62,7 +73,7 @@ const Contact = () => {
 
             {/* WhatsApp Button */}
             <a 
-              href="https://wa.me/8801700000000" 
+              href="https://wa.me/+8801849683375" 
               target="_blank" 
               rel="noreferrer"
               className="flex items-center gap-4 bg-[#111] border border-gray-800 p-5 rounded-2xl hover:border-green-400 transition-colors group"
@@ -122,16 +133,18 @@ const Contact = () => {
               ></textarea>
             </div>
             
+            {/* 🛡️ Spam Protection Submit Button */}
             <button 
               type="submit" 
-              className="w-full bg-green-400 text-black font-bold text-lg py-4 rounded-xl hover:bg-green-500 transition-all hover:shadow-[0_0_20px_rgba(74,222,128,0.3)]"
+              disabled={isSubmitting}
+              className={`w-full font-bold text-lg py-4 rounded-xl transition-all ${isSubmitting ? 'bg-gray-600 text-gray-400 cursor-not-allowed' : 'bg-green-400 text-black hover:bg-green-500 hover:shadow-[0_0_20px_rgba(74,222,128,0.3)]'}`}
             >
-              Send Message 🚀
+              {isSubmitting ? 'Please wait...' : 'Send Message 🚀'}
             </button>
 
             {/* Status Message */}
             {status && (
-              <p className={`text-center mt-4 font-medium ${status.includes('successfully') ? 'text-green-400' : 'text-gray-400'}`}>
+              <p className={`text-center mt-4 font-medium ${status.includes('successfully') ? 'text-green-400' : (status.includes('too fast') ? 'text-yellow-400' : 'text-gray-400')}`}>
                 {status}
               </p>
             )}
