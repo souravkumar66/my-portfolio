@@ -60,7 +60,7 @@ const Footer = () => {
               {/* WhatsApp */}
               <a href="http://wa.me/+8801849683375" target="_blank" rel="noreferrer" className="group flex items-center gap-3 text-gray-400 hover:text-green-400 transition-all w-max">
                 <span className="w-8 h-8 rounded-full bg-[#111] border border-gray-800 flex items-center justify-center group-hover:border-green-400 transition-colors text-sm">🎨</span> 
-                Behance
+                WhatsApp
               </a>
 
             </div>
