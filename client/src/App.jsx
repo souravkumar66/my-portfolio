@@ -9,12 +9,12 @@ import Contact from './pages/Contact';
 function App() {
   return (
     <Router>
-      {/* Dark minimal theme setup */}
-      <div className="bg-[#0a0a0a] text-white min-h-screen flex flex-col font-sans selection:bg-green-400 selection:text-black">
+      {/* Dark minimal theme setup - Added w-full */}
+      <div className="bg-[#0a0a0a] text-white min-h-screen w-full flex flex-col font-sans selection:bg-green-400 selection:text-black">
         <Navbar />
         
         {/* Main Content Area */}
-        <main className="flex-grow">
+        <main className="flex-grow w-full">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/portfolio" element={<Portfolio />} />
