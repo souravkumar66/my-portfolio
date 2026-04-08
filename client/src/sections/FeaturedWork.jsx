@@ -11,7 +11,7 @@ const FeaturedWork = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/projects');
+        const response = await axios.get('https://my-portfolio-vlso.onrender.com/api/projects');
         setProjects(response.data);
         setLoading(false);
       } catch (error) {
